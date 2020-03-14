@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1,maximum-scale=1,user-scalable=no">
+    
+    <title>responsive web normal 2</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+    <style>
+        /*모바일 css*/
+        .container{
+            width: 90%;
+            max-width: 1132px;
+            margin: 0 auto;
+        }
+        
+        /*플로트 속성으로 인해 발생하는 문제를 방지하기 위해*/
+        .cfixed:after,.container::after{
+            display: block;
+            content:"";
+            clear: both;
+        }
+        .blind{/*모든환경에서 보이지는 않지만 반드시 입력해야하는 html 태그*/
+            position:absolute;
+            width:0;
+            height:0;
+            line-height: 0;
+            text-indent: -9999px;
+            overflow: hidden;
+
+        }
+        /*header영역 css */
+        .header{
+            /* font-size: 40px; */
+            position: relative;
+            padding:30px 7%;
+        }
+        .header .menu_toggle_btn{
+            position: absolute;
+            top: 43%;
+            width: 25px;
+            float: left;
+            cursor: pointer;
+            
+        }
+        .header .menu_toggle_btn span{
+            width: 100%;
+            background: black;
+            display: block;
+            height: 2px;
+        }
+        .header .menu_toggle_btn span:nth-child(2){
+            margin:2px 0;
+        }
+        .header .gnb{
+            display: none;
+            position: absolute;
+            top:100%;
+            left: 0;
+            width: 100%;
+            background:rgb(98, 128, 129);
+            
+        }
+        .header .gnb li{
+            border-bottom: 1px solid white;
+        }
+        .header .gnb li a{
+            font-size: 14px;
+            color: white;
+            padding: 15px 15px 10px 10px;
+            display: block;
+        }
+        .header .logo{
+            text-align: center; 
+        }
+        .header .logo a{
+            color: black;
+            font-size: 20px;
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: normal;
+        }
+       .header a i{
+            position: absolute;
+            top: 43%;
+            right: 5%;
+           cursor: pointer;
+         
+            float: right;
+            color: black;
+            
+       }
+       /*main영역 css */
+     .main{
+         margin-top:0;
+         position: relative;
+     }
+       .main .social{
+          display: none;
+          position: absolute;
+          top: 0;
+          left: 3.5%;
+       }
+       .main .social li{
+          margin-top: 20px;
+       }
+       .main .social li:first-child{
+           margin-top: 0;
+       }
+       .main .social a{
+           color:black;
+           z-index: 0;
+       }
+       
+       .main img{
+            display: block;
+            width: 90%;
+            max-width: 90%;
+            height: auto;
+            margin: 0 auto;
+            margin-top: 10px;
+            z-index: -1;
+       }
+       .main .info{
+           position: absolute;
+           top:28%;
+           left:7%;
+           z-index: 0;
+           font-size: 35px;
+       }
+       .main .info .name{
+           color:black;
+           margin-bottom: 0px;
+           font-weight: normal;
+        }
+        .main .info span{
+            position: absolute;
+            top: 120%;
+            font-size: 0.3rem;
+            margin-left: 5px;
+            font-weight: normal;
+        }
+        
+        
+        .main .play .view_button {
+            display: none;
+            position: absolute;
+            bottom: 0;
+            left: 9.4%;
+            background: rgb(110, 143, 145);
+            z-index: 0;
+            border: 0;
+            padding: 10px 20px;
+            
+            
+        }
+        .main .play .view_button a{
+            display: none;
+            color: white;
+            font-weight: normal;
+            font-size: 10px;
+        }
+       
+        .main .play a i{
+            display: none;
+            color: #eee; 
+            position: absolute;
+            bottom: 5%;
+            left: 38%;
+            font-size: 13px;
+        }
+        
+        /*display 영역*/
+        .display{
+            margin-top:73px;
+        }
+        
+        .display .job-type .type li{
+            float: left;
+            width: 22%;
+            margin-left: 3%;
+            margin-bottom: 30px;
+            text-align: center;
+            max-width: 1132px;
+           
+        }  
+        .display .job-type .type li:first-child{
+            margin-left: 0;
+        }
+        .display .job-type .type li a{
+            font-size: 14px;
+            color: black;
+            font-family: 'Times New Roman', Times, serif;
+            
+        }
+       
+        .display .type li a:hover{
+            text-decoration: underline;
+        }
+
+        .display .job-type{
+           position: relative; 
+        }
+        
+        .display .display_list li{
+            
+            width: 100%;
+        }
+        .display .display_list li a{
+           
+            width: 100%;
+            display: block;
+            height: 100%;
+            
+        }
+        .display .display_list li a:before{
+            position: absolute;
+            top:0;
+            left: 0;
+            display: block;
+            background:rgb(110, 143, 145);
+            z-index: 10;
+            width: 100%;
+            height: 100%;
+            content: "";
+            opacity: 0;
+            transition: all 0.2s;
+
+        }
+        .display .display_list li a:hover::before{
+            opacity: 0.86;
+        }
+        
+       
+        .display .display_list li .inform{
+            position: absolute;
+            top: 0;
+            left: 23px;
+            z-index: 20;
+            opacity: 0;
+
+        }
+        .display .display_list li a:hover .inform{
+            opacity: 1;
+            transform: translateY(23px);
+        }
+        .display .display_list li .inform h3{
+            color: #fff;
+            font-size: 35px;
+            font-weight: normal;
+            margin-bottom: 10px;
+        }
+        .display .display_list li .inform span{
+            color: #fff;
+            font-size: 15px;
+            font-weight: normal;
+           
+        }
+        
+        .display .display_list img{
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin-top: 50px;
+        }
+         .display .explore_button{
+             text-align: center;
+             margin-top: 40px;
+             margin-bottom: 40px;
+         }
+        .display .explore_button a{
+            border: 0;
+            background: rgb(110, 143, 145);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 20px /20px; 
+            font-weight: normal;
+            font-size: 10px;
+            
+        }
+
+
+
+        /*테블릿용 css*/
+        @media all and (min-width:768px){
+            /*header영역 css */
+            .header{
+                position: static;
+            }
+            .header .menu_toggle_btn{
+                display: none;
+                
+                font-size: 25px;
+            }
+            .header .logo{
+                float: left;
+            }
+            .header .logo a{
+                font-size: 25px;
+                
+            }
+            .header .gnb{
+                position: static;
+                display: block;
+                float: right;
+                background:white;
+                width: auto;
+                
+            }
+            .header .gnb li{
+                border-bottom:0;
+                float: left;
+            }
+            .header .gnb li a{
+                color: black;
+                padding: 10px 15px 0 0;
+            }
+            .header a i{
+                display: none;
+            }
+            /*main영역 css */
+            .main .social{
+              display: block;
+              left: 6%;
+            font-size: 10px;
+            }
+            .main img{
+            width: 80%;
+            max-width: 80%;
+            height: auto;
+       }
+       .main .info{
+           position: absolute;
+           font-size: 50px;
+           left:11%;
+       }
+       .main .info span{
+           font-size: 0.3rem;
+           
+           top: 100%;
+
+       }
+       .main .info .name{
+           margin-bottom: 15%;
+           font-weight: normal;
+           
+        }
+        
+        .main .play .view_button{
+            display: block;
+            left: 14%;
+            padding: 20px 30px;
+            
+            
+        }
+        .main .play .view_button a{
+            display: block;
+            font-size: 13px;
+        
+        }
+        .main .play a i{
+            bottom: 5%;
+            display: block;
+            font-size: 19px;
+            left: 35%;
+        }
+
+         /*display 영역*/
+         .display .job-type{
+             width: 60%;
+             margin: 0 auto;
+         }
+        
+        .display .display_list li{
+            width: 50%;
+            float: left;
+        }
+        .display .explore_button{
+            margin-top: 60px;
+        }
+    }
+        /*pc용 css*/
+        @media all and (min-width:1024px){ 
+            /*main영역 css */
+            .header{
+                padding:35px 7%;
+            }
+            .header .logo a{
+                font-size:30px;
+            }
+            .header .gnb li a{
+                font-size: 13px;
+                padding: 10px 20px 0 0;
+            }
+            .main .social{
+            font-size: 13px;
+            }
+            .main img{
+            margin-top: 20px;
+            width: 70%;
+            max-width: 70%;
+            
+            }
+            .main .info{
+           font-size: 60px;
+           left:13.8%;
+       }
+        .main .play .view_button{
+            left: 18.5%;
+            padding: 20px 35px;
+          
+            
+        }
+        .main .play .view_button a{
+            font-size: 13px;
+        }
+        .main .play a i{
+            bottom: 4%;
+            font-size: 23px;
+        }
+         /*display 영역*/
+         
+        .display .job-type{
+             width: 45%;
+             margin: 0 auto;
+         }
+         .display .job-type .type li a{
+             font-size: 16px;
+         }
+    }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <!--header 영역 -->
+        <header class="header cfixed">
+            
+            
+            <span class="menu_toggle_btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </span>
+            
+            <h1 class="logo"><a href="">MITALENT</a></h1>
+            <nav>
+            <ul class="gnb">
+                <li><a href="">HOME</a></li>
+                <li><a href="">CLIENTS</a></li>
+                <li><a href="">NEWS</a></li>
+                <li><a href="">GALLERY</a></li>
+            </ul>
+            </nav>
+            
+            <a href=""><i class="fas fa-search"></i></a>
+        </header>
+        <!--main영역-->
+        <section class="main">
+            <div class="container">
+                <ul class="social">
+                <li><a href=""><i class="fab fa-facebook-square"></i></a></li>
+                <li><a href=""><i class="fab fa-instagram"></i></a></li>
+                <li><a href=""><i class="fab fa-youtube"></i></a></li>
+                <li><a href=""><i class="fab fa-twitter"></i></a></li>
+                
+                </ul>
+
+                <img src="images/p-images/main_model.png" alt="">
+
+                
+
+                <div class="info">
+                    <h1 class="name">Georina <br>Alson</h1>
+                    <span>Young Model 2020</span>
+                </div>
+                <div class="play">
+                    <h1 class="view_button"><a href="">View Profile</a></h1>
+                    <a href=""><i class="fas fa-play" ></i></a>
+                </div>
+            </div>
+              
+        </section>
+        <!--display영역-->
+        <section class="display">
+            <div class="container">
+                <div class="job-type">
+                <ul class="type">
+                    <li><a href="">ACTOR</a></li>
+                    <li><a href="">MUSICIAN</a></li>
+                    <li><a href="">COMEDIAN</a></li>
+                    <li><a href="">MODEL</a></li>
+                </ul>
+            </div>
+                <ul class="display_list">
+                    <li>
+                        <a href="">
+                                <div class="inform">
+                                        <h3>kate</h3>
+                                        <span>comedian</span>
+                                    </div>
+                            <img src="images/p-images/work01.jpg">
+                            
+                        </a>
+                    </li>
+                    <li>
+                            <a href="">
+                                <div class="inform">
+                                    <h3>kate</h3>
+                                    <span>comedian</span>
+                                </div>
+                                <img src="images/p-images/work02.jpg">
+                            </a>
+                    </li>
+                    <li>
+                            <a href="">
+                                <div class="inform">
+                                    <h3>kate</h3>
+                                    <span>comedian</span>
+                                </div>
+                                <img src="images/p-images/work03.jpg">
+                            </a>
+                    </li>
+                    <li>
+                            <a href="">
+                                <div class="inform">
+                                    <h3>kate</h3>
+                                    <span>comedian</span>
+                                </div>
+                                <img src="images/p-images/work04.jpg">
+                            </a>
+                    </li>
+                    <li>
+                            <a href="">
+                                <div class="inform">
+                                    <h3>kate</h3>
+                                    <span>comedian</span>
+                                </div>
+                                <img src="images/p-images/work05.jpg">
+                            </a>
+                    </li>
+                    <li>
+                            <a href="">
+                                <div class="inform">
+                                    <h3>kate</h3>
+                                    <span>comedian</span>
+                                </div>
+                                <img src="images/p-images/work06.jpg">
+                            </a>
+                    </li>
+                    <li>
+                            <a href="">
+                                <div class="inform">
+                                    <h3>kate</h3>
+                                    <span>comedian</span>
+                                </div>
+                                <img src="images/p-images/work07.jpg">
+                            </a>
+                    </li>
+                    <li>
+                            <a href="">
+                                <div class="inform">
+                                    <h3>kate</h3>
+                                    <span>comedian</span>
+                                </div>
+                                <img src="images/p-images/work08.jpg">
+                            </a>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="explore_button">
+                <a href="">EXPLORE MORE</a>
+            </div> 
+        </section>
+<!--latest news 영역-->
+        <section class="latest-news">
+            <div class="container">
+                <h3>Latest News</h3>
+                <hr>
+                <ul class="news-list">
+                <li>
+                    <a href="">
+                        <img src="images/p-images/blog01.jpg">  
+                    </a>
+                    <time datetime="2020-3-8">8 march, 2020</time>
+                    <a href="">
+                        <h3>5 reasons to keep your body salon reservation</h3>
+                    </a>
+                </li>
+                <li>
+                        <a href="">
+                            <img src="images/p-images/blog02.jpg">  
+                        </a>
+                        <time datetime="2020-3-8">8 march, 2020</time>
+                        <a href="">
+                            <h3>Benjamin Franklin Method of Habit Formation</h3>
+                        </a>
+                    </li>
+                <li>
+                    <a href="">
+                        <img src="images/p-images/blog03.jpg">  
+                    </a>
+                    <time datetime="2020-3-8">8 march, 2020</time>
+                    <a href="">
+                        <h3>29 Motivational Quotes For Business And other work enviroments</h3>
+                    </a>
+                </li>
+                </ul>
+
+                <ul class="news-list2">
+                    <li>
+                        <div class="trending1">
+                            <time datetime="2020-3-8">8 march, 2020</time>
+                            <a href="">
+                            <h3>Use your reset button to change your vibration</h3>
+                            </a>
+                        </div>
+
+                        <div class="trending2">
+                            <a href="">
+                                <img src="images/p-images/slide01.jpg">
+                            </a>
+                        <h3>trending</h3>
+                        </div>
+                    </li>
+                    <li>
+                            <a href="">
+                                <img src="images/p-images/blog03.jpg">  
+                            </a>
+                            <time datetime="2020-3-8">8 march, 2020</time>
+                            <a href="">
+                                <h3>Dream interpretation common symbols and their meanings</h3>
+                            </a>
+                        </li>
+                        <li>
+                                <a href="">
+                                    <img src="images/p-images/blog02.jpg">  
+                                </a>
+                                <div class="video">
+                                    <a href=""><i class="fas fa-play"></i></a>
+                                    <h3>PLAY ALL</h3>
+                                </div>
+                               
+                            </li>
+                     <li>
+                            <a href="">
+                                <img src="images/p-images/model.jpeg">  
+                            </a>
+                            <time datetime="2020-3-8">8 march, 2020</time>
+                            <a href="">
+                                <h3>Motivations And your personal vision an unbeatable Force</h3>
+                            </a>
+                    </li>
+                </ul>
+
+            </div>
+        </section>
+
+        <!--footer-->
+        <footer class="footer">
+            <h3 class="logo2">MITALENT</h3>
+            <div class="signup">
+                <h3 class="subscribe">sign up our newsletter</h3>
+                <i class="fas fa-envelope-square"></i>
+            </div>
+            <hr>
+            <div class="copyright">
+                <h3>2018 MI Talent. Designed by Tranmautritam for Mass Impressions</h3>
+                <ul class="social2">
+                <li><a href=""><i class="fab fa-facebook-square"></i></a></li>
+                <li><a href=""><i class="fab fa-instagram"></i></a></li>
+                <li><a href=""><i class="fab fa-youtube"></i></a></li>
+                <li><a href=""><i class="fab fa-twitter"></i></a></li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
